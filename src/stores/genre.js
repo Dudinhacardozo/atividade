@@ -12,16 +12,16 @@ export const useGenreStore = defineStore('genre', () => {
   };
   const currentGenreId = computed(() => state.currentGenreId);
   const genres = computed(() => state.genres)
-//   const getGenreName = (id) => state.genres.find((genre) => genre.id === id).name
+  const getGenreName = (id) => state.genres.find((genre) => genre.id === id).name
 
-  function getGenreName(id) {
-    for (let genre in state.genres) {
-        if(genre.id == id) {
-            console.log(genre)
-            return genre.name;
-        }
-    }
-  }
+  // function getGenreName(id) {
+  //   for (let genre in state.genres) {
+  //       if(genre.id == id) {
+  //           console.log(genre)
+  //           return genre.name;
+  //       }
+  //   }
+  // }
 
   const getAllGenres = async (type) => {
     const response = await api.get(`genre/${type}/list?language=pt-BR`)
@@ -29,7 +29,7 @@ export const useGenreStore = defineStore('genre', () => {
     console.log(state.genres)
   }
 
-  return { genres, getAllGenres, getGenreName }
+  return { genres, getAllGenres, getGenreName, setCurrentGenreId, currentGenreId }
 })
 
 const genreStore = useGenreStore()
