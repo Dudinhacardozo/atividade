@@ -4,9 +4,13 @@ import api from '@/plugins/axios'
 
 export const useGenreStore = defineStore('genre', () => {
   const state = reactive({
-    genres: []
-  })
-
+    genres: [],
+    currentGenreId: null,
+  });
+  const setCurrentGenreId = (genreId) => {
+    state.currentGenreId = genreId;
+  };
+  const currentGenreId = computed(() => state.currentGenreId);
   const genres = computed(() => state.genres)
 //   const getGenreName = (id) => state.genres.find((genre) => genre.id === id).name
 
